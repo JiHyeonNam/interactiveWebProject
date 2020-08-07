@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<style>
+	.menu{
+		display : flex;
+		<!-- margin-top : -10vh; -->
+		padding : 2em;
+		border-radius : 20px;
+		background : #eee;
+	}
+	.btn-label {
+		text-shadow : rgba(255,255,255,1) 0 1px 0;
+		pointer-events : none;
+	}
+	.icon{
+		width : 60px;
+		pointer-events : none;
+	}
+</style>
+<body>
+	<div class="menu">
+		<!-- <button class="menu-btn" data-value="1">
+			<img src="image/ilbuni_1.png" alt="" class="icon">
+			<span class="btn-label">일분이 1</span>
+		</button>
+		<button class="menu-btn" data-value="2">
+			<img src="image/ilbuni_2.png" alt="" class="icon">
+			<span class="btn-label">일분이 2</span>
+		</button>
+		<button class="menu-btn" data-value="3">
+			<img src="image/ilbuni_3.png" alt="" class="icon">
+			<span class="btn-label">일분이 3</span>
+		</button> -->
+	</div>
+	<script>
+		const menu = document.querySelector('.menu');
+		function clickHandler(event){
+				// console.log(event.target.getAttribute('data-value'));
+				// console.log(event.target.dataset.value);
+
+				let elem = event.target;
+				while(!elem.classList.contains('menu-btn')){
+						elem = elem.parentNode;
+
+						if(elem.nodeName == 'BODY'){
+							elem = null;
+							return;
+						}
+				}
+				console.log(elem.dataset.value)
+		}
+
+		menu.addEventListener('click',clickHandler);
+		window.addEventListener('click',()=>{
+				let htmlStr = `
+					<button class="menu-btn" data-value="1">
+						<img src="image/ilbuni_1.png" alt="" class="icon">
+						<span class="btn-label">일분이 1</span>
+					</button>
+					<button class="menu-btn" data-value="2">
+						<img src="image/ilbuni_2.png" alt="" class="icon">
+						<span class="btn-label">일분이 2</span>
+					</button>
+					<button class="menu-btn" data-value="3">
+						<img src="image/ilbuni_3.png" alt="" class="icon">
+						<span class="btn-label">일분이 3</span>
+					</button>
+			`;
+				menu.innerHTML = htmlStr;
+		});
+
+	</script>
+</body>
+</html>
